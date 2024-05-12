@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import Sidebar from "./Component/Sidebar";
+import Navbar from "./Component/Navbar";
+import Order from "../src/Pages/Order";
+import Stock from "./Pages/Stock";
+import Dashboard from "./Component/Dashboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+    return (
+        <BrowserRouter>
+            <div className='d-flex'>
+                <div className='w-auto'>
+                    <Sidebar/>
+                </div>
+                <div className='col overflow-auto'>
+                    <Routes>
+                        <Route path='/' element={<><Navbar/><Dashboard/></>}></Route>
+                        <Route path='/order' element={<Order/>}></Route>
+                        <Route path='/stock' element={<Stock/>}></Route>
+                    </Routes>
+                </div>
+            </div>
+        </BrowserRouter>
+    )
 }
 
 export default App;
