@@ -23,4 +23,4 @@ function LineChart(){
         </div>
     )
 }
-export default LineChart;
+ export default LineChart;

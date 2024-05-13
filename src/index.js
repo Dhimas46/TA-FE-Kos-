@@ -1,16 +1,38 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import { createRoot } from 'react-dom/client';
+import Sidebar from "./Component/Sidebar";
+import Navbar from "./Component/Navbar";
+import Order from "../src/Pages/Order";
+import Stock from "./Pages/Stock";
+import Dashboard from "./Component/Dashboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "chart.js/auto";
 
-ReactDOM.render(
+const root = createRoot(document.getElementById("app"));
+
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function App(){
+    return (
+        <BrowserRouter>
+            <div className='d-flex'>
+                <div className='w-auto'>
+                    <Sidebar/>
+                </div>
+                <div className='col overflow-auto'>
+                    <Routes>
+                        <Route path='/' element={<><Navbar/><Dashboard/></>}></Route>
+                        <Route path='/order' element={<Order/>}></Route>
+                        <Route path='/stock' element={<Stock/>}></Route>
+                    </Routes>
+                </div>
+            </div>
+        </BrowserRouter>
+    )
+}
+
+export default App;

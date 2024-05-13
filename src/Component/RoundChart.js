@@ -1,7 +1,6 @@
 'use client';
 import React from "react";
 import {Pie} from 'react-chartjs-2';
-
 const labels = ["Januari", "Februari", "Maret", "April", "Mei", "Juni"];
 
 const data = {
